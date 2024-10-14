@@ -1,10 +1,6 @@
-import mysql from 'mysql2';
+import { Sequelize } from "sequelize";
 
-
-export const db = mysql.createConnection({
-    host: 'localhost',
-    port: 3306,
-    user: 'root',
-    password: 'admin',
-    database: 'mascot_clinical'
+export const sequelize = new Sequelize('MASCOTS', "root", 'admin', {
+    host: "localhost",
+    dialect: "mysql"
 });
