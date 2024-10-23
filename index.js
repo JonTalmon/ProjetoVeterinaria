@@ -1,11 +1,7 @@
 import express from 'express'
-import { pool } from "./src/db/connection.js"
+import sequelize from "./src/db/connection.js"
 const app = express();
 const port = 3000;
-
-
-
-
 
 
 
