@@ -17,7 +17,7 @@ const PersonRegister = sequelize.define('PersonRegister', {
         unique: true,
     }
 }, {
-    tableName: 'personRegister',
+    tableName: 'personregister',
     timestamps: false,
 });
 
