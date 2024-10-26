@@ -1,8 +1,8 @@
 import { DataTypes } from "sequelize";
-import sequelize from "../db/connection";
-import PersonRegister from "./personRegister";
+import sequelize from "../db/connection.js";
+import PersonRegister from "./personRegister.js";
 
-const Address = new sequelize.define("Address", {
+const Address = sequelize.define("Address", {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
