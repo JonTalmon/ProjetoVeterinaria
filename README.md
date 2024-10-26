@@ -30,8 +30,8 @@ Este é um sistema de gestão para clínicas veterinárias que permite registrar
 3. Configure o banco de dados em db/connection.js e crie as tabelas necessárias.
 
 4. Execute a aplicação:
-```bash
-    node index.js
+   ```bash
+   node index.js
 
 ## Rotas da API
 
