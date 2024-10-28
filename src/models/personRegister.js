@@ -1,5 +1,8 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../db/connection.js"
+import Address from "./adress.js";
+import Contact from "./contact.js";
+import Role from "./role.js";
 
 const PersonRegister = sequelize.define('PersonRegister', {
     id: {

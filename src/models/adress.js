@@ -8,11 +8,11 @@ const Address = sequelize.define("Address", {
         primaryKey: true,
         autoIncrement: true,
     },
-    addressStreet: {
+    addressstreet: {
         type: DataTypes.STRING(100),
         allowNull: false,
     },
-    addressNumber: {
+    addressnumber: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
@@ -20,16 +20,12 @@ const Address = sequelize.define("Address", {
         type: DataTypes.STRING(100),
         allowNull: false,
     },
-    postalCode: {
+    postalcode: {
         type: DataTypes.STRING(9),
         allowNull: false,
     },
-    personRegisterid: {
+    personregisterid: {
         type:DataTypes.INTEGER,
-        references: {
-            model: PersonRegister,
-            key: "id"
-        },
         allowNull: false,
     }
 }, {

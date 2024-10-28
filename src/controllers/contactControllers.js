@@ -1,4 +1,5 @@
 import Contact from "../models/contact.js";
+import "../models/associations.js";
 
 async function readAllContacts(req, res) {
     try {
@@ -53,8 +54,8 @@ async function readContactByEmail(req, res) {
 
 async function createContact(req, res) {
     try {
-        const { personRegisterId, phoneNumber, email } = req.body;
-        const newContact = await Contact.create({ personRegisterId, phoneNumber, email });
+        const { personregisterId, phonenumber, email } = req.body;
+        const newContact = await Contact.create({ personregisterId, phonenumber, email });
         res.status(201).json(newContact);
     } catch (err) {
         res.status(500).json({ Error: "Error creating contact", details: err.message });
@@ -86,7 +87,7 @@ async function updateContactById(req, res) {
         }
 
         await contact.update({
-            phoneNumber: phoneNumber || contact.phoneNumber,
+            phoneNumber: phoneNumber || contact.phonenumber,
             email: email || contact.email,
         });
 

@@ -1,6 +1,5 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../db/connection.js";
-import PersonRegister from "./personRegister.js";
 
 const Role = sequelize.define("Role", {
     id: {
@@ -8,15 +7,11 @@ const Role = sequelize.define("Role", {
         primaryKey: true,
         autoIncrement: true,
     },
-    personRegisterid: {
+    personregisterid: {
         type: DataTypes.INTEGER,
-        references: {
-            model: PersonRegister,
-            key: "id",
-        },
         allowNull: false,
     },
-    roleType: {
+    roletype: {
         type: DataTypes.STRING(10),
         allowNull: false,
         validate: {

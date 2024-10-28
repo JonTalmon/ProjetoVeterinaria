@@ -1,4 +1,5 @@
 import Address from "../models/adress.js";
+import "../models/associations.js";
 
 
 async function readAddressById(req, res) {
@@ -87,7 +88,7 @@ async function deleteAddressById(req, res) {
         const { id } = req.params;
         const deletedAddress = await Address.destroy({ where: { id } });
         if (deletedAddress) {
-            res.status(204).send(); // Retorna 204 No Content
+            res.status(204).send();
         } else {
             res.status(404).json({ Error: "Address not found" });
         }
@@ -99,7 +100,7 @@ async function deleteAddressById(req, res) {
 async function updateAddressById(req, res) {
     try {
         const { id } = req.params; 
-        const { addressStreet, addressNumber, city, postalCode, personRegisterId } = req.body;
+        const { addressStreet, addressNumber, city, postalCode, personregisterId } = req.body;
         const address = await Address.findByPk(id);
         
         if (!address) {
@@ -107,10 +108,10 @@ async function updateAddressById(req, res) {
         }
 
         await address.update({ 
-            addressStreet: addressStreet || address.addressStreet, 
-            addressNumber: addressNumber || address.addressNumber,
+            addressStreet: addressStreet || address.addressstreet, 
+            addressNumber: addressNumber || address.addressnumber,
             city: city || address.city,
-            postalCode: postalCode || address.postalCode
+            postalCode: postalCode || address.postalcode
         });
 
         res.status(200).json(address);

@@ -1,6 +1,7 @@
 import PersonRegister from "../models/personRegister.js"
 import Role from "../models/role.js"
 import Address from "../models/adress.js"
+import "../models/associations.js";
 
 async function readAllPersons(req, res) {
     try {
@@ -28,7 +29,7 @@ async function readPersonById(req, res) {
 async function readPersonByName(req, res) {
     try {
         const { name } = req.params;
-        const person = await PersonRegister.findOne({ where: name});
+        const person = await PersonRegister.findOne({ where: { name } });
         if (person) {
             res.status(200).json(person);
         } else {
@@ -45,7 +46,7 @@ async function readPersonsByRole(req, res) {
         const person = await PersonRegister.findAll({
             include: {
                 model: Role,
-                where: { roleType: role },
+                where: { roletype: role },
                 attributes: []
             }
         });
@@ -65,7 +66,7 @@ async function readPersonByPostalCode(req, res) {
         const person = await PersonRegister.findAll({
             include: {
                 model: Address,
-                where: { postalCode: searchedPostalCode },
+                where: { postalcode: searchedPostalCode },
                 attributes: []
             }
         });
@@ -85,7 +86,7 @@ async function readPersonByPhoneNumber(req, res) {
         const person = await PersonRegister.findAll({
             include: {
                 model: Contact,
-                where: { phoneNumber: cellPhone},
+                where: { phonenumber: cellPhone},
                 attributes: []
             }
         });
@@ -132,7 +133,9 @@ async function deletePersonById(req, res) {
         const { id } = req.params;
         const person = await PersonRegister.findByPk(id);
         if (person) {
-            await PersonRegister.destroy();
+            await PersonRegister.destroy({
+                where: { id }
+            });
             res.status(204).json({ message: "Person deleted successfully"});
         } else {
             res.status(404).json({ Error: "Person not found" });

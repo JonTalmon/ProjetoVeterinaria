@@ -1,4 +1,5 @@
 import Role from "../models/role.js";
+import "../models/associations.js";
 
 async function readAllRoles(req, res) {
     try {
@@ -78,8 +79,8 @@ async function updateRoleById(req, res) {
         }
 
         await role.update({ 
-            personRegisterid: personRegisterid || role.personRegisterid, 
-            roleType: roleType || role.roleType,
+            personRegisterid: personRegisterid || role.personregisterid, 
+            roleType: roleType || role.roletype,
             crmv: crmv || role.crmv
         });
 

@@ -8,15 +8,11 @@ const Contact = sequelize.define("Contact", {
         primaryKey: true,
         autoIncrement: true,
     },
-    personRegisterid: {
+    personregisterid: {
         type: DataTypes.INTEGER,
-        references: {
-            model: PersonRegister,
-            key: "id",
-        },
         allowNull: false,
     },
-    phoneNumber: {
+    phonenumber: {
         type: DataTypes.STRING(20),
         allowNull: false,
     },
